@@ -18,7 +18,6 @@ public class CambioImagen : MonoBehaviour
 
     void Start()
     {
-        ObtenerImagen();
     }
 
     // Update is called once per frame
@@ -53,7 +52,7 @@ public class CambioImagen : MonoBehaviour
         webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(postData);
         webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         webRequest.SetRequestHeader("Content-Type", "application/json");
-        
+        requestFinished = true;
         yield return webRequest.SendWebRequest();
 
         if (webRequest.isNetworkError || webRequest.isHttpError)
