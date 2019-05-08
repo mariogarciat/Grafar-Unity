@@ -29,23 +29,25 @@ public class CambioImagen : MonoBehaviour
         if (status == TrackableBehaviour.Status.TRACKED && !requestFinished)
         {
             Debug.Log("ENTRE!!!!");
-            ObtenerImagen();         
+            //ObtenerImagen();         
         }
     }
 
-    private void ObtenerImagen()
+    public void ObtenerImagen(string jsonData)
     {
+        Debug.LogError("ObtenerImagen");
         //cositas request
         string url = "https://grafar.herokuapp.com/api/data";
-        StartCoroutine(GetData(url));
+        GetData(url, jsonData);
     }
 
-    IEnumerator GetData(string uri)
+    IEnumerator GetData(string uri, string jsonData)
     {
-        string function = "x^3+11";
-        int a = -20;
-        int b = 20;
-        string jsonData = "{\"function\": \"" + function + "\",\"a\": " + a + ",\"b\": " + b + "}";
+        Debug.LogError("GetData");
+        //string function = "x^3+11";
+        //int a = -20;
+        //int b = 20;
+        //string jsonData = "{\"function\": \"" + function + "\",\"a\": " + a + ",\"b\": " + b + "}";
         byte[] postData = System.Text.Encoding.UTF8.GetBytes(jsonData);
 
         UnityWebRequest webRequest = UnityWebRequest.Post(uri, "POST");
